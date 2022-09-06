@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\InversionResource;
 use App\Models\Inversion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class InversionController extends Controller
@@ -17,7 +18,8 @@ class InversionController extends Controller
      */
     public function index()
     {
-        $inversiones = Inversion::all();
+        $currentuser = Auth::user();
+        $inversiones = Inversion::where('user_id', $currentuser->id)->get();
         return response([
             'inversiones'=> InversionResource::collection($inversiones),
             'message' => 'Lista de inversiones obtenida'
@@ -38,7 +40,7 @@ class InversionController extends Controller
             'monto' => 'required|int',
             'fecha_inversion' => 'required|date',
             'fecha_pago' => 'date|nullable',
-            'imagen_recibo' => 'max:255',
+            'imagen_recibo' => 'required|image|max:1024',
             'user_id' => 'required|int',
             'estado' => 'required|max:255',
             
@@ -51,6 +53,9 @@ class InversionController extends Controller
             ], 400);
         }
 
+        $filename = basename($request->file('imagen_recibo')->store('public/recibos'));
+        $data['imagen_recibo'] = $filename;
+       
         $inversion = Inversion::create($data);
         return response([
             'inversion' => new InversionResource($inversion),
