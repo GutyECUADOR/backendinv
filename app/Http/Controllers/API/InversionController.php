@@ -1,0 +1,104 @@
+<?php
+
+namespace App\Http\Controllers\API;
+
+use App\Http\Controllers\Controller;
+use App\Http\Resources\InversionResource;
+use App\Models\Inversion;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
+class InversionController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $inversiones = Inversion::all();
+        return response([
+            'inversiones'=> InversionResource::collection($inversiones),
+            'message' => 'Lista de inversiones obtenida'
+        ], 200);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $data = $request->all();
+        $validator = Validator::make($data, [
+            'tipo' => 'required|max:255',
+            'monto' => 'required|int',
+            'fecha_inversion' => 'required|date',
+            'fecha_pago' => 'date|nullable',
+            'imagen_recibo' => 'max:255',
+            'user_id' => 'required|int',
+            'estado' => 'required|max:255',
+            
+        ]);
+
+        if ($validator->fails()) {
+            return response([
+                'errors' => $validator->errors(),
+                'message' => 'Uno o más campos requeridos no pasaron la validación'
+            ], 400);
+        }
+
+        $inversion = Inversion::create($data);
+        return response([
+            'inversion' => new InversionResource($inversion),
+            'message' => 'Inversion registrada con éxito'
+        ], 200);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Inversion  $inversion
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Inversion $inversion)
+    {
+        return response([
+            'inversion' => new InversionResource($inversion),
+            'message' => 'Inversion Obtenida'
+        ], 200);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Inversion  $inversion
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Inversion $inversion)
+    {
+        $inversion->update($request->all());
+        return response([
+            'inversion' => new InversionResource($inversion),
+            'message' => 'Inversion actualizada con éxito'
+        ], 200);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Inversion  $inversion
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Inversion $inversion)
+    {
+        $inversion->delete();
+        return response([
+            'message' => 'Inversion eliminada con éxito'
+        ], 200);
+    }
+}
