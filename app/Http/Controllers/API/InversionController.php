@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\InversionResource;
 use App\Models\Inversion;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -38,10 +39,8 @@ class InversionController extends Controller
         $validator = Validator::make($data, [
             'tipo' => 'required|max:255',
             'monto' => 'required|int',
-            'fecha_inversion' => 'required|date',
             'fecha_pago' => 'date|nullable',
-            'imagen_recibo' => 'required|image|max:1024',
-            'user_id' => 'required|int',
+            'imagen_recibo' => 'required|image',
             'estado' => 'required|max:255',
             
         ]);
@@ -55,6 +54,11 @@ class InversionController extends Controller
 
         $filename = basename($request->file('imagen_recibo')->store('public/recibos'));
         $data['imagen_recibo'] = $filename;
+
+        $currentuser = Auth::user();
+        $data['user_id'] = $currentuser->id;
+
+        $data['fecha_inversion'] = Carbon::now();
        
         $inversion = Inversion::create($data);
         return response([
