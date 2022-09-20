@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\InversionController;
+use App\Http\Controllers\API\TipoInversionController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -25,4 +26,5 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::get('/userdata', [AuthController::class, 'userData'])->middleware('auth:sanctum');
 
 // API Inversion 
-Route::apiResource('/inversion', InversionController::class)->middleware('auth:sanctum');
+Route::apiResource('/inversion', InversionController::class)->middleware('auth:sanctum'); 
+Route::apiResource('/tiposinversion', TipoInversionController::class)->middleware('auth:sanctum');

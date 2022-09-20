@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\InversionResource;
 use App\Models\Inversion;
+
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -39,11 +40,11 @@ class InversionController extends Controller
     {
         $data = $request->all();
         $validator = Validator::make($data, [
-            'tipo' => 'required|max:255',
+            'tipo' => 'required|max:190',
             'monto' => 'required|int',
             'fecha_pago' => 'date|nullable',
             'imagen_recibo' => 'required',
-            'estado' => 'required|max:255',
+            'estado' => 'required|max:190',
             
         ]);
 
@@ -67,16 +68,20 @@ class InversionController extends Controller
 
         // Fecha de pago autocalculada
         switch ($data['tipo']) {
-            case 'VIP2':
-                $add_days = 30;
+            case '1':
+                $add_days = 31;
                 break;
             
-            case 'VIP1':
-                $add_days = 60;
+            case '2':
+                $add_days = 46;
                 break;
+            
+            case '3':
+                $add_days = 61;
+                break;   
             
             default:
-                $add_days = 90;
+                $add_days = 91;
                 break;
         }
 

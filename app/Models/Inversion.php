@@ -25,7 +25,7 @@ class Inversion extends Model
     public function getDiasPagoAttribute()
     {
         $fecha_pago = Carbon::parse($this->fecha_pago);
-        $fecha_inversion = Carbon::parse($this->fecha_inversion);
-        return $fecha_pago->diffInDays($fecha_inversion);
+        $hoy = Carbon::now();
+        return $fecha_pago->diffInDays($hoy);
     }
 }
