@@ -11,7 +11,7 @@ class Inversion extends Model
     use HasFactory;
 
     protected $fillable = [
-        'tipo',
+        'tasa',
         'monto',
         'fecha_inversion',
         'fecha_pago',

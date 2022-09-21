@@ -16,7 +16,7 @@ class CreateInversionsTable extends Migration
     {
         Schema::create('inversions', function (Blueprint $table) {
             $table->id();
-            $table->string('tipo');
+            $table->decimal('tasa',4,2);
             $table->decimal('monto', 9,2);
             $table->date('fecha_inversion');
             $table->date('fecha_pago')->nullable();

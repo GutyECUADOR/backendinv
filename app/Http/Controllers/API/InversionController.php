@@ -40,7 +40,7 @@ class InversionController extends Controller
     {
         $data = $request->all();
         $validator = Validator::make($data, [
-            'tipo' => 'required|max:190',
+            'tasa' => 'required|max:190',
             'monto' => 'required|int',
             'fecha_pago' => 'date|nullable',
             'imagen_recibo' => 'required',
@@ -66,24 +66,9 @@ class InversionController extends Controller
 
         $data['fecha_inversion'] = Carbon::now();
 
-        // Fecha de pago autocalculada
-        switch ($data['tipo']) {
-            case '1':
-                $add_days = 31;
-                break;
-            
-            case '2':
-                $add_days = 46;
-                break;
-            
-            case '3':
-                $add_days = 61;
-                break;   
-            
-            default:
-                $add_days = 91;
-                break;
-        }
+        // Fecha de pago autocalculada segun los dias de inversion
+        $add_days = $data['dias_inversion'];
+               
 
         $data['fecha_pago'] = Carbon::now()->addDays($add_days);
        
