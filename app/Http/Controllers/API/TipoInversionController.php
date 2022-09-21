@@ -8,6 +8,7 @@ use App\Http\Resources\TipoInversionResource;
 use App\Models\TipoInversion;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class TipoInversionController extends Controller
@@ -19,7 +20,8 @@ class TipoInversionController extends Controller
      */
     public function index()
     {
-        $tiposInversiones = TipoInversion::all();
+        $currentuser = Auth::user();
+        $tiposInversiones = TipoInversion::where('nivel_ranking','<=', $currentuser->ranking)->orderBy('tasa', 'asc')->get();
         return response([
             'tiposInversion'=> TipoInversionResource::collection($tiposInversiones),
             'message' => 'Lista de tipos obtenida'
@@ -38,6 +40,7 @@ class TipoInversionController extends Controller
         $validator = Validator::make($data, [
             'nombre' => 'required|max:190',
             'tasa' => 'required',
+            'nivel_ranking' => 'required|int',
         ]);
 
         if ($validator->fails()) {

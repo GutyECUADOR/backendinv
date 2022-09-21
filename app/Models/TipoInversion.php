@@ -11,6 +11,7 @@ class TipoInversion extends Model
 
     protected $fillable = [
         'nombre',
-        'tasa'
+        'tasa',
+        'nivel_ranking'
     ];
 }

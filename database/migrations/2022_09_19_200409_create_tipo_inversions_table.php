@@ -17,6 +17,7 @@ class CreateTipoInversionsTable extends Migration
             $table->id();
             $table->string('nombre');
             $table->decimal('tasa', 4,2);
+            $table->integer('nivel_ranking')->default(1);
             $table->timestamps();
         });
     }
