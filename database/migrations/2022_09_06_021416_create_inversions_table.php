@@ -17,12 +17,15 @@ class CreateInversionsTable extends Migration
         Schema::create('inversions', function (Blueprint $table) {
             $table->id();
             $table->decimal('tasa',4,2);
+            $table->integer('dias_inversion');
             $table->decimal('monto', 9,2);
+            $table->decimal('monto_recibir', 9,2)->nullable();
             $table->date('fecha_inversion');
             $table->date('fecha_pago')->nullable();
             $table->string('imagen_recibo');
             $table->foreignIdFor(User::class);
             $table->string('estado');
+            $table->text('observacion')->nullable();;
             $table->timestamps();
         });
     }

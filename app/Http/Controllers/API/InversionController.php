@@ -45,6 +45,7 @@ class InversionController extends Controller
             'fecha_pago' => 'date|nullable',
             'imagen_recibo' => 'required',
             'estado' => 'required|max:190',
+            'dias_inversion' => 'required|int',
             
         ]);
 

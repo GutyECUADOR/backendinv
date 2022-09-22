@@ -53,7 +53,7 @@ class TipoInversionController extends Controller
         $tipoInversion = TipoInversion::create($data);
         return response([
             'inversion' => new InversionResource($tipoInversion),
-            'message' => 'Inversion registrada con éxito'
+            'message' => 'Tipo de inversion registrada con éxito'
         ], 200);
     }
 

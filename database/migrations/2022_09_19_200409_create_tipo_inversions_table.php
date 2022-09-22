@@ -16,7 +16,7 @@ class CreateTipoInversionsTable extends Migration
         Schema::create('tipo_inversions', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->decimal('tasa', 4,2);
+            $table->decimal('tasa', 4,2)->unique();
             $table->integer('nivel_ranking')->default(1);
             $table->timestamps();
         });

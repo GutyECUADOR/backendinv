@@ -12,12 +12,15 @@ class Inversion extends Model
 
     protected $fillable = [
         'tasa',
+        'dias_inversion',
         'monto',
+        'monto_recibir',
         'fecha_inversion',
         'fecha_pago',
         'imagen_recibo',
         'user_id',
         'estado',
+        'observacion'
     ];
 
     protected $appends = ['dias_pago'];
