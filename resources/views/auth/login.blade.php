@@ -17,7 +17,7 @@
             <h1 class="h3 mb-3 fw-normal">Ingrese por favor</h1>
 
             <div class="form-floating">
-            <input type="email" name="email" :value="old('email')" class="form-control" id="email" placeholder="name@example.com" required autofocus>
+            <input type="email" name="email" value="{{old('email')}}" class="form-control" id="email" placeholder="name@example.com" required autofocus>
             <label for="email">Usuario</label>
             </div>
             <div class="form-floating">
@@ -32,7 +32,7 @@
                 </label>
            
             <button class="w-100 btn btn-lg btn-primary" type="submit">Ingresar</button>
-            <p class="mt-5 mb-3 text-muted">&copy; 2012–{{ now()->year }}</p>
+            <p class="mt-5 mb-3 text-muted">&copy; 2022–{{ now()->year }}</p>
 
         </form>
     
