@@ -8,7 +8,7 @@
       <div class="nav-item text-nowrap">
         <form method="POST" action="{{ route('logout') }}">
             @csrf
-            <a class="nav-link px-3" href="route('logout')"
+            <a class="nav-link px-3" href="#"
                     onclick="event.preventDefault();
                                 this.closest('form').submit();">
                 {{ __('Cerrar Sesión') }}

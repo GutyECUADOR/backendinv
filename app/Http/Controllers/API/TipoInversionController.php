@@ -38,7 +38,7 @@ class TipoInversionController extends Controller
     {
         $data = $request->all();
         $validator = Validator::make($data, [
-            'nombre' => 'required|max:190',
+            'nombre' => 'required|max:190|unique:tipo_inversions',
             'tasa' => 'required',
             'nivel_ranking' => 'required|int',
         ]);
