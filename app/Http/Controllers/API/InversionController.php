@@ -5,7 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\InversionResource;
 use App\Models\Inversion;
-
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -74,6 +74,10 @@ class InversionController extends Controller
         $data['fecha_pago'] = Carbon::now()->addDays($add_days);
        
         $inversion = Inversion::create($data);
+        $user = User::findOrFail($currentuser->id);
+        $user->ranking = $user->ranking + 1;
+        $user->save();
+
         return response([
             'inversion' => new InversionResource($inversion),
             'message' => 'Inversion registrada con éxito'
