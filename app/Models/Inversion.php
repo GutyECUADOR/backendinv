@@ -40,14 +40,14 @@ class Inversion extends Model
         $hoy = Carbon::now();
         
         if ($hoy >= $fecha_pago) {
-            return $fecha_inversion->diffInDays($fecha_pago);
+            return $this->dias_inversion;
         }
         
         return $fecha_inversion->diffInDays($hoy);
     }
 
     public function getTotalUtilidadAttribute() {
-        $utilidadDiaria = $this->monto_recibir /  $this->dias_inversion;
+        $utilidadDiaria = round($this->monto_recibir /  $this->dias_inversion, 4);
         return round($utilidadDiaria * $this->dias_transcurridos,2);
     }
 
