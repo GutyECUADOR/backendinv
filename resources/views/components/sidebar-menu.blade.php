@@ -8,13 +8,13 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{{route('tipos-inversion.index')}}">
             <span data-feather="bar-chart-2"></span>
             Tipos de Inversion
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{{route('dashboard')}}">
             <span data-feather="layers"></span>
             Dias de inversion
             </a>
