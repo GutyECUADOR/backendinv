@@ -14,7 +14,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            TiposInversionSeeder::class
+            UserSeeder::class,
+            TiposInversionSeeder::class,
+            DiasInversionSeeder::class
         ]);
         // \App\Models\User::factory(10)->create();
     }

@@ -14,7 +14,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{route('dashboard')}}">
+            <a class="nav-link" href="{{route('dias-inversion.index')}}">
             <span data-feather="layers"></span>
             Dias de inversion
             </a>

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DiasInversionController;
+use App\Http\Controllers\InversionController;
 use App\Http\Controllers\TipoInversionController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,12 +20,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', [InversionController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::resource('tipos-inversion', TipoInversionController::class);
+    Route::resource('dias-inversion', DiasInversionController::class);
 });
 
 require __DIR__.'/auth.php';
