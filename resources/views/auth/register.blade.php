@@ -27,7 +27,7 @@
 
 
                 <div class="table-responsive">
-                    <table class="table table-striped table-sm">
+                    <table class="table table-hover table-striped table-sm">
                         <thead>
                         <tr>
                             <th scope="col">ID</th>
@@ -48,12 +48,11 @@
                                     <td>{{ $user->ranking }}</td>
                                     <td>{{ $user->role }}</td>
                                     <td>{{ $user->created_at }}</td>
-                                    <td>{{ $user->ranking }}</td>
                                     <td>
-                                        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        <a href="{{ route('register.edit', $user)}}" class="btn btn-sm btn-primary">
                                             <span data-feather="edit"></span>
                                             Editar
-                                        </button>
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach

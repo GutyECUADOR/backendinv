@@ -35,7 +35,11 @@ Route::middleware('auth')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
     ->name('register');
 
+    Route::get('register/{user}', [RegisteredUserController::class, 'edit'])->name('register.edit');
+    Route::put('register/{user}', [RegisteredUserController::class, 'update'])->name('register.update');
+
     Route::post('register', [RegisteredUserController::class, 'store']);
+
 
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
                 ->name('password.request');

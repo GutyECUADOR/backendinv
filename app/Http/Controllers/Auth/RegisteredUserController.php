@@ -21,8 +21,19 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        $users = DB::table('users')->get();
+        $users = User::all();
         return view('auth.register', compact('users'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(User $user)
+    {
+        return view('usuarios.edit', compact('user'));
     }
 
     /**
@@ -49,5 +60,27 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
         return redirect('/register')->with('status', 'Usuario '.$request->email.' registrado con éxito!');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id) {
+        $request->validate([
+            'name' => ['required', 'string', 'max:191'],
+            'email' => ['required', 'string', 'email', 'max:191'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
+
+        $user = User::findOrFail($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->save();
+        return redirect()->route('register')->with('status', 'El usuario '.$request->name.' actualizado con éxito!');
     }
 }
