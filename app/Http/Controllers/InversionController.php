@@ -58,7 +58,7 @@ class InversionController extends Controller
      */
     public function edit(Inversion $inversion)
     {
-        //
+        return view('inversiones.edit', compact('inversion'));
     }
 
     /**
@@ -70,7 +70,16 @@ class InversionController extends Controller
      */
     public function update(Request $request, Inversion $inversion)
     {
-        //
+        $request->validate([
+            'estado' => 'required|max:190',
+            'observacion' => 'required|max:190',
+        ]);
+
+        $tipoInversion = Inversion::findOrFail($inversion->id);
+        $tipoInversion->estado = $request->estado;
+        $tipoInversion->observacion = $request->observacion;
+        $tipoInversion->save();
+        return redirect()->route('dashboard')->with('status', 'Inversion '.$inversion->id.' actualizada con éxito!');
     }
 
     /**

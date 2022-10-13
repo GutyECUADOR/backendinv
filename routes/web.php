@@ -21,6 +21,9 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', [InversionController::class, 'index'])->middleware(['auth'])->name('dashboard');
+Route::get('/inversions/{inversion}', [InversionController::class, 'edit'])->middleware(['auth'])->name('inversions.edit');
+Route::put('/inversions/{inversion}', [InversionController::class, 'update'])->middleware(['auth'])->name('inversions.update');
+
 
 Route::middleware('auth')->group(function () {
     Route::resource('tipos-inversion', TipoInversionController::class);

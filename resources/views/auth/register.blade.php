@@ -34,6 +34,8 @@
                             <th scope="col">Nombres</th>
                             <th scope="col">Correo</th>
                             <th scope="col">Ranking</th>
+                            <th scope="col">ROL</th>
+                            <th scope="col">Fecha de Registro</th>
                             <th scope="col">Acciones</th>
                         </tr>
                         </thead>
@@ -44,8 +46,11 @@
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->ranking }}</td>
+                                    <td>{{ $user->role }}</td>
+                                    <td>{{ $user->created_at }}</td>
+                                    <td>{{ $user->ranking }}</td>
                                     <td>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                             <span data-feather="edit"></span>
                                             Editar
                                         </button>

@@ -114,8 +114,7 @@
 					<div id="phone-carousel" class="phone-carousel carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="6000"> 
 						
 						<div class="carousel-inner">
-							<div class="carousel-item active"><img class="img-fluid" src="assets/img/devices/iphonex-slide-1.png" alt=""></div>
-							<div class="carousel-item"><img class="img-fluid" src="assets/img/devices/iphonex-slide-2.png" alt=""></div>
+							<div class="carousel-item active"><img class="img-fluid" src="assets/img/devices/app1.png" alt=""></div>
 						</div><!--//carousel-inner-->   
 						<ol class="carousel-indicators mt-3">
 							<li data-bs-target="#phone-carousel" data-bs-slide-to="0" class="active" aria-current="true"></li>

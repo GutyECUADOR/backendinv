@@ -43,23 +43,27 @@
                                     <td>{{ $dias->nombre }}</td>
                                     <td>{{ $dias->dias }}</td>
                                     <td>
-                                        <a href="{{ route('dias-inversion.edit', $dias)}}" class="btn btn-sm btn-primary">
-                                            <span data-feather="edit"></span>
-                                            Editar
-                                        </a>
-                                        <form method="POST" action="{{ route('dias-inversion.destroy', $dias)}}">
-                                            @method('delete')
-                                            @csrf
-
-                                            <a class="btn btn-sm btn-danger"
-                                                    onclick="event.preventDefault();
-                                                            if (window.confirm('Confirma eliminar registro?')) {
-                                                                this.closest('form').submit();
-                                                            }">
-                                                    <span data-feather="trash"></span>
-                                                    Eliminar
+                                        <div class="btn-group">
+                                            <a href="{{ route('dias-inversion.edit', $dias)}}" class="btn btn-sm btn-primary">
+                                                <span data-feather="edit"></span>
+                                                Editar
                                             </a>
-                                        </form>
+                                            <form method="POST" action="{{ route('dias-inversion.destroy', $dias)}}">
+                                                @method('delete')
+                                                @csrf
+    
+                                                <a class="btn btn-sm btn-danger"
+                                                        onclick="event.preventDefault();
+                                                                if (window.confirm('Confirma eliminar registro?')) {
+                                                                    this.closest('form').submit();
+                                                                }">
+                                                        <span data-feather="trash"></span>
+                                                        Eliminar
+                                                </a>
+                                            </form>
+
+                                        </div>
+                                       
                                     
                                     </td>
                                 </tr>
