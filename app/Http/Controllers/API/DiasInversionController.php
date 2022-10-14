@@ -17,7 +17,7 @@ class DiasInversionController extends Controller
     {
         $diasInversion = DiasInversion::all();
         return response([
-            'diasinversion'=> $diasInversion,
+            'diasInversion'=> $diasInversion,
             'message' => 'Lista de dias obtenida'
         ], 200);
     }

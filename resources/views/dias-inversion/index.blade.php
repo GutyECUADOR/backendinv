@@ -80,12 +80,12 @@
                 <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Nuevo tipo de Inversion</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Nuevo Plazo para Inversion</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                        
-                        <form method="POST" action="{{ route('tipos-inversion.store') }}">
+                        <form method="POST" action="{{ route('dias-inversion.store') }}">
                             @csrf
             
                             <!-- Name -->
@@ -95,15 +95,10 @@
                             </div>
 
                             <div class="form-floating mb-3">
-                                <input type="number" name="tasa" class="form-control" id="tasa" value="0.80" min="0.10" step="0.01" required>
-                                <label for="tasa">Tasa (Utilidad)</label>
+                                <input type="number" name="dias" class="form-control" id="dias" value="1" min="1" step="1" required>
+                                <label for="tasa">Dias</label>
                             </div>
 
-                            <div class="form-floating mb-3">
-                                <input type="number" name="nivel_ranking" class="form-control" id="nivel_ranking" value="1" min="1" required>
-                                <label for="nivel_ranking">Nivel Ranking</label>
-                                <p class="badge bg-warning text-dark">Indique ranking 1 para conceder acceso a este tipo de inversión para todos los usuarios.</p>
-                            </div>
 
                             <div class="d-grid gap-2">
                                 <button class="btn-block btn btn-lg btn-primary" type="submit">Registrar</button>

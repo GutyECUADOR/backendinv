@@ -36,7 +36,14 @@ class DiasInversionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $request->validate([
+            'nombre' => 'required|max:190|unique:dias_inversions',
+            'dias' => 'required|int'
+        ]);
+
+        DiasInversion::create($data);
+        return redirect()->route('dias-inversion.index')->with('status', 'El tipo de inversion '.$request->nombre.' registrada con éxito!');
     }
 
     /**
