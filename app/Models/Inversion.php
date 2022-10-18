@@ -54,4 +54,8 @@ class Inversion extends Model
     public function getPorcentajeProgresoAttribute() {
         return round($this->dias_transcurridos * 100 / $this->dias_inversion);
     }
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }

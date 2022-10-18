@@ -25,12 +25,6 @@
                 Clientes
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{route('password.request')}}">
-            <span data-feather="key"></span>
-            Restaurar contraseñas
-            </a>
-        </li>
         </ul>
 
     </div>

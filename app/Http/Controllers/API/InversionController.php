@@ -23,7 +23,7 @@ class InversionController extends Controller
     public function index()
     {
         $currentuser = Auth::user();
-        $inversiones = Inversion::where('user_id', $currentuser->id)->orderBy('fecha_inversion', 'desc')->get();
+        $inversiones = Inversion::where('user_id', $currentuser->id)->orderBy('id', 'desc')->get();
         return response([
             'inversiones'=> InversionResource::collection($inversiones),
             'message' => 'Lista de inversiones obtenida'

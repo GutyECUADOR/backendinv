@@ -25,6 +25,7 @@
               <thead>
                 <tr>
                   <th scope="col">#</th>
+                  <th scope="col">Usuario</th>
                   <th scope="col">Tasa</th>
                   <th scope="col">Dias</th>
                   <th scope="col">Monto</th>
@@ -40,6 +41,8 @@
                 @foreach ($inversiones as $inversion)
                   <tr>
                     <td>{{ $inversion->id }}</td>
+                   
+                    <td>{{ $inversion->user->name }}</td>
                     <td>{{ $inversion->tasa }}</td>
                     <td>{{ $inversion->dias_inversion }}</td>
                     <td>{{ $inversion->monto }}</td>

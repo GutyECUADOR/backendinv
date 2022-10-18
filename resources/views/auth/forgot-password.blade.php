@@ -1,13 +1,10 @@
-<x-app-layout>
-    <x-navbar-menu></x-navbar-menu>
-    
+<x-guest-layout>
     <div class="container-fluid">
       <div class="row">
-        <x-sidebar-menu></x-sidebar-menu>
-
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Restaurar contraseña de usuarios</h1>
+        
+        <main class="col-md-12">
+          <div class="d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Restaurar contraseña</h1>
           </div>
 
             <div class="container">
@@ -44,5 +41,5 @@
         </main>
       </div>
     </div>
-</x-app-layout>
+</x-guest-layout>
 

@@ -14,7 +14,8 @@ class InversionController extends Controller
      */
     public function index()
     {
-        $inversiones = Inversion::all();
+        $inversiones = Inversion::orderBy('id','desc')->get();
+        
         return view('dashboard', compact('inversiones'));
     }
 

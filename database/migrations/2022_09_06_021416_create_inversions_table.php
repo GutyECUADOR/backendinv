@@ -23,10 +23,11 @@ class CreateInversionsTable extends Migration
             $table->date('fecha_inversion');
             $table->date('fecha_pago')->nullable();
             $table->string('imagen_recibo');
-            $table->foreignIdFor(User::class);
+            $table->unsignedBigInteger('user_id');
             $table->string('estado');
-            $table->text('observacion')->nullable();;
+            $table->text('observacion')->nullable();
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
