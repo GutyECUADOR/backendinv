@@ -47,7 +47,7 @@ class Inversion extends Model
     }
 
     public function getTotalUtilidadAttribute() {
-        $utilidadDiaria = round($this->monto_recibir /  $this->dias_inversion, 4);
+        $utilidadDiaria = round($this->monto_recibir / $this->dias_inversion, 4);
         return round($utilidadDiaria * $this->dias_transcurridos,2);
     }
 

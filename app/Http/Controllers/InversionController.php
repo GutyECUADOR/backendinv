@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Inversion;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class InversionController extends Controller
@@ -72,12 +73,26 @@ class InversionController extends Controller
     public function update(Request $request, Inversion $inversion)
     {
         $request->validate([
+            'tasa' => 'required|max:190',
+            'monto' => 'required|int',
             'estado' => 'required|max:190',
             'observacion' => 'required|max:190',
+            'fecha_inversion' => 'required|date',
+            'dias_inversion' => 'required|int',
         ]);
+
+        $monto_recibir = (($request->monto * $request->tasa) / 100) * $request->dias_inversion + $request->monto;
+
+        $fecha_inversion = new Carbon($request->fecha_inversion);
+        $fecha_pago = $fecha_inversion->addDay($request->dias_inversion);
 
         $tipoInversion = Inversion::findOrFail($inversion->id);
         $tipoInversion->estado = $request->estado;
+        $tipoInversion->fecha_inversion = $request->fecha_inversion;
+        $tipoInversion->dias_inversion = $request->dias_inversion;
+        $tipoInversion->monto = $request->monto;
+        $tipoInversion->fecha_pago = $fecha_pago;
+        $tipoInversion->monto_recibir = $monto_recibir;
         $tipoInversion->observacion = $request->observacion;
         $tipoInversion->save();
         return redirect()->route('dashboard')->with('status', 'Inversion '.$inversion->id.' actualizada con éxito!');

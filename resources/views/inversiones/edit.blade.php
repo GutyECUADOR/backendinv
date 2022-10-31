@@ -46,6 +46,34 @@
                             </select>
                         </div>
 
+                        
+                        <!-- Fecha Inversion -->
+                        <div class="form-floating mb-3">
+                            <input type="date" name="fecha_inversion" value="{{ $inversion->fecha_inversion }}" class="form-control" id="fecha_inversion" required autofocus>
+                            <label for="fecha_inversion">Fecha Inversion</label>
+                        </div>
+
+                        <!-- Monto -->
+                        <div class="form-floating mb-3">
+                            <input type="number" name="monto" value="{{ intval($inversion->monto) }}" class="form-control" id="monto" required>
+                            <label for="monto">Monto invertido</label>
+                        </div>
+
+                        <!-- Tasa -->
+                        <div class="form-floating mb-3">
+                            <input type="number" name="tasa" value="{{ $inversion->tasa }}" class="form-control" id="tasa" required>
+                            <label for="tasa">Tasa</label>
+                        </div>
+
+
+                        <!-- Dias Inversion -->
+                        <div class="form-floating mb-3">
+                            <input type="number" name="dias_inversion" value="{{ $inversion->dias_inversion }}" class="form-control" id="dias_inversion" required>
+                            <label for="dias_inversion">Dias Inversion</label>
+                        </div>
+
+                        
+
                         <!-- Estado -->
                         <div class="form-floating mb-3">
                             <input type="text" name="observacion" value="{{ $inversion->observacion }}" class="form-control" id="nombre" required autofocus>
