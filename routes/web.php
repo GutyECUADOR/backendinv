@@ -20,7 +20,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', [InversionController::class, 'index'])->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', [InversionController::class, 'index'])->middleware(['auth','role'])->name('dashboard');
 Route::get('/inversions/{inversion}', [InversionController::class, 'edit'])->middleware(['auth'])->name('inversions.edit');
 Route::put('/inversions/{inversion}', [InversionController::class, 'update'])->middleware(['auth'])->name('inversions.update');
 
