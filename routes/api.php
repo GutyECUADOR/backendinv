@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\AvatarController;
 use App\Http\Controllers\API\DiasInversionController;
 use App\Http\Controllers\API\InversionController;
 use App\Http\Controllers\API\TipoInversionController;
@@ -30,3 +31,4 @@ Route::get('/userdata', [AuthController::class, 'userData'])->middleware('auth:s
 Route::apiResource('/inversion', InversionController::class)->middleware('auth:sanctum'); 
 Route::apiResource('/tiposinversion', TipoInversionController::class)->middleware('auth:sanctum');
 Route::apiResource('/diasinversion', DiasInversionController::class)->middleware('auth:sanctum');
+Route::post('/avatar', [AvatarController::class, 'store'])->middleware('auth:sanctum');;
