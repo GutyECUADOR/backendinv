@@ -45,16 +45,9 @@
                             <label for="email">Correo Electrónico (email)</label>
                         </div>
 
-                        <!-- Password -->
                         <div class="form-floating mb-3">
-                            <input type="text" name="password" class="form-control" id="password" required>
-                            <label for="password">Contraseña</label>
-                        </div>
-
-                        <!-- Confirm Password -->
-                        <div class="form-floating mb-3">
-                            <input type="text" name="password_confirmation" class="form-control" id="password_confirmation" required>
-                            <label for="password_confirmation">Confirme Contraseña</label>
+                            <input type="text" name="ranking" value="{{ $user->ranking }}" class="form-control" id="ranking" required>
+                            <label for="ranking">Ranking</label>
                         </div>
 
                         <div class="d-grid gap-2">

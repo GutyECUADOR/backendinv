@@ -38,7 +38,7 @@
                         <!-- Estado -->
                         <div class="form mb-3">
                             <label for="estado">Estado</label>
-                            <select name="estado" class="form-control form-control-sm">
+                            <select name="estado" class="form-control form-control-sm"  {{ $inversion->estado == 'aprobada' ? 'disabled' : '' }}>
                                 <option value="cancelada" {{ $inversion->estado == 'cancelada' ? 'selected' : '' }}>Cancelada</option>
                                 <option value="pendiente" {{ $inversion->estado == 'pendiente' ? 'selected' : '' }}>Pendiente</option>
                                 <option value="aprobada" {{ $inversion->estado == 'aprobada' ? 'selected' : '' }}>Aprobada</option>
@@ -49,7 +49,7 @@
                         
                         <!-- Fecha Inversion -->
                         <div class="form-floating mb-3">
-                            <input type="date" name="fecha_inversion" value="{{ $inversion->fecha_inversion }}" class="form-control" id="fecha_inversion" required autofocus>
+                            <input type="date" name="fecha_inversion" value="{{ $inversion->fecha_inversion }}" class="form-control" id="fecha_inversion" required autofocus  {{ $inversion->estado == 'aprobada' ? 'disabled' : '' }}>
                             <label for="fecha_inversion">Fecha Inversion</label>
                         </div>
 

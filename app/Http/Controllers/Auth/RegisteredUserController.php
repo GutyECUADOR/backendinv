@@ -72,14 +72,13 @@ class RegisteredUserController extends Controller
     public function update(Request $request, $id) {
         $request->validate([
             'name' => ['required', 'string', 'max:191'],
-            'email' => ['required', 'string', 'email', 'max:191'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'email' => ['required', 'string', 'email', 'max:191']
         ]);
 
         $user = User::findOrFail($id);
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = Hash::make($request->password);
+        $user->ranking = $request->ranking;
         $user->save();
         return redirect()->route('register')->with('status', 'El usuario '.$request->name.' actualizado con éxito!');
     }

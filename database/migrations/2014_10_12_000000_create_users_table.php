@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->string('role')->default('USER_ROLE');
             $table->integer('ranking')->default(1);
+            $table->string('avatar')->default('default.png');
             $table->timestamps();
         });
     }
