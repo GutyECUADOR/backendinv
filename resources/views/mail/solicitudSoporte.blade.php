@@ -7,7 +7,9 @@
     <title>Nuevo Correo de Soporte</title>
 </head>
 <body>
-    <h2>{{ $formulario['asunto']}}</h2>
-    <p>{{ $formulario['comentario']}}</p>
+    <h2>Asunto: {{ $formulario['asunto']}}</h2>
+    <p>Email: {{ $formulario['email']}}</p>
+    <p>Teléfono: {{ $formulario['telefono']}}</p>
+    <p>Comentario/Problema: {{ $formulario['comentario']}}</p>
 </body>
 </html>

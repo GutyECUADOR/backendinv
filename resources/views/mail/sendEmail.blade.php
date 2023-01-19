@@ -24,9 +24,19 @@
                           @csrf
               
                            <!-- Name -->
-                           <div class="form-floating mb-3">
-                              <input type="text" name="asunto" value="{{old('asunto')}}" class="form-control" id="asunto" required autofocus>
+                          <div class="form-floating mb-3">
+                              <input type="text" name="asunto" value="{{old('asunto')}}" class="form-control" id="asunto" placeholder="Mi inversion no me llega, no puedo inverir, etc" required autofocus>
                               <label for="asunto">Asunto</label>
+                          </div>
+
+                          <div class="form-floating mb-3">
+                              <input type="email" name="email" value="{{old('email')}}" class="form-control" id="email" required>
+                              <label for="email">Email al que te contactaremos</label>
+                          </div>
+
+                          <div class="form-floating mb-3">
+                              <input type="text" name="telefono" value="{{old('telefono')}}" class="form-control" id="telefono" required>
+                              <label for="telefono">Teléfono Celular al que podamos contactarte</label>
                           </div>
 
                           <!-- Comentario -->
