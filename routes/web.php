@@ -18,6 +18,15 @@ use Illuminate\Support\Facades\Mail;
 |
 */
 
+/*
+Route::get('/link', function () {
+    $target = "/home/qex8lzddwa48/prosperocrecer_backend/storage/app/public"; // Carpeta privada
+    $shortcut = "/home/qex8lzddwa48/public_html/prosperocrecer.com/storage"; // Carpeta publica
+
+    symlink($target, $shortcut);
+ });
+ */
+
 Route::get('/', function () {
     return view('welcome');
 });
